@@ -18,11 +18,17 @@ describe DockingStation do
    bike = docking_station.release_bike
    list_of_bikes = docking_station.bikes
    docking_station.dock_bike(bike)
+
    it 'dock a bike' do
      expect(list_of_bikes.include?(bike)).to eq(true)
    end
 
    it 'display available bikes' do
     expect(docking_station).to respond_to(:display_bikes)
-    end
+   end
+
+#   empty_docking_station = DockingStation.new
+#   it 'show error when no bikes' do
+#     expect { empty_docking_station.release_bike }.to raise_error if empty_docking_station.bikes.empty?
+#   end
 end
