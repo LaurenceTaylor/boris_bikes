@@ -21,4 +21,8 @@ describe DockingStation do
    it 'dock a bike' do
      expect(list_of_bikes.include?(bike)).to eq(true)
    end
+
+   it 'display available bikes' do
+    expect(docking_station).to respond_to(:display_bikes)
+    end
 end
