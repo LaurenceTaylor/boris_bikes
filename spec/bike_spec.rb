@@ -3,7 +3,7 @@ require 'bike'
 describe Bike do
   bike = Bike.new
 
-  it 'is working?' do
+  it 'responds to method working?' do
     expect(bike).to respond_to(:working?)
   end
 
