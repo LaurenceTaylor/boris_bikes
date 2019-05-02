@@ -12,7 +12,7 @@ describe DockingStation do
    end
 
    it 'responds to dock_bike' do
-     expect(docking_station).to respond_to(:dock_bike)
+     expect(docking_station).to respond_to(:dock_bike).with(1).argument
    end
 
    bike = docking_station.release_bike
