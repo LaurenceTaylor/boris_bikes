@@ -1,10 +1,6 @@
 require 'docking_station'
 
 describe DockingStation do
-  it 'should responds to release_bike' do
-    expect(subject).to respond_to(:release_bike)
-  end
-
   describe '#release_bike' do
     it 'should release a bike if bikes are available' do
       station = DockingStation.new
@@ -29,6 +25,6 @@ describe DockingStation do
   end
 
   it 'should display available bikes' do
-    expect(subject).to respond_to(:display_bikes)
+    expect(subject.bikes).to eq (subject.display_bikes)
   end
 end
