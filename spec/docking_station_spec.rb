@@ -13,7 +13,7 @@ describe DockingStation do
   end
 
   describe "#dock" do
-    it 'should be able to dock a bike if there is space' do
+    it 'should dock a bike if there is space' do
       bike = Bike.new
       subject.dock(bike)
       expect(subject.bikes.include?(bike)).to eq(true)
@@ -27,6 +27,6 @@ describe DockingStation do
   end
 
   it 'should display available bikes' do
-    expect(subject.bikes).to eq (subject.display)
+    expect(subject.display).to eq (subject.bikes)
   end
 end
