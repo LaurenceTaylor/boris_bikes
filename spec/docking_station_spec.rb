@@ -1,30 +1,32 @@
 require 'docking_station'
 
 describe DockingStation do
-  describe '#release_bike' do
+  describe '#release' do
     it 'should release a bike if bikes are available' do
-      station = DockingStation.new
-      station.dock_bike(Bike.new)
-      expect(station.release_bike).to be_an_instance_of(Bike)
+      subject.dock(Bike.new)
+      expect(subject.release).to be_an_instance_of(Bike)
     end
 
     it 'should raise an error when no bikes are stored' do
-      expect { subject.release_bike }.to raise_error 'No bikes available'
+      expect { subject.release }.to raise_error 'No bikes available'
     end
   end
 
-  it 'should respond to dock_bike' do
-    expect(subject).to respond_to(:dock_bike).with(1).argument
-  end
+  describe "#dock" do
+    it 'should be able to dock a bike if there is space' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.bikes.include?(bike)).to eq(true)
+    end
 
-  it 'should be able to dock a bike' do
-    station = DockingStation.new
-    bike = Bike.new
-    station.dock_bike(bike)
-    expect(station.bikes.include?(bike)).to eq(true)
+    it 'should raise an error when the station is at capacity' do
+      dock_process = lambda { subject.dock(Bike.new) }
+      subject.capacity.times { dock_process.call }
+      expect { dock_process.call }.to raise_error 'Station at capacity'
+    end
   end
 
   it 'should display available bikes' do
-    expect(subject.bikes).to eq (subject.display_bikes)
+    expect(subject.bikes).to eq (subject.display)
   end
 end
