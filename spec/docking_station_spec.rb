@@ -27,6 +27,6 @@ describe DockingStation do
   end
 
   it 'should display available bikes' do
-    expect(subject.display).to eq (subject.bikes)
+    expect(subject.display).to eq(subject.bikes)
   end
 end
